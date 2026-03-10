@@ -1,0 +1,22 @@
+[
+  {
+    "question": "Show the employee who make highest sale?",
+    "sql": "SELECT e.firstName, e.lastName, SUM(od.priceEach * od.quantityOrdered) AS total_sales FROM orders o JOIN orderdetails od ON o.orderNumber = od.orderNumber JOIN customers c ON o.customerNumber = c.customerNumber JOIN employees e ON c.salesRepEmployeeNumber = e.employeeNumber GROUP BY e.firstName, e.lastName ORDER BY total_sales DESC LIMIT 1",
+    "timestamp": "2026-03-05 09:54:04"
+  },
+  {
+    "question": "How many customers in each country?",
+    "sql": "SELECT c.country, COUNT(c.customerNumber) AS number_of_customers FROM customers c GROUP BY c.country ORDER BY number_of_customers DESC",
+    "timestamp": "2026-03-05 09:58:59"
+  },
+  {
+    "question": "how many orders in each status?",
+    "sql": "SELECT status, COUNT(*) FROM orders GROUP BY status",
+    "timestamp": "2026-03-06 13:56:23"
+  },
+  {
+    "question": "Show orders placed in 2003",
+    "sql": "SELECT * FROM orders WHERE YEAR(orderDate) = 2003",
+    "timestamp": "2026-03-10 10:08:13"
+  }
+]

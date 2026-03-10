@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourcePerFileMappings">
+    <file url="das://be68fe9a-4013-47ec-ae4e-5bb6d48026ae/schema/classicmodels/table/orderdetails.sql" value="be68fe9a-4013-47ec-ae4e-5bb6d48026ae" />
+    <file url="das://be68fe9a-4013-47ec-ae4e-5bb6d48026ae/schema/classicmodels/table/products.sql" value="be68fe9a-4013-47ec-ae4e-5bb6d48026ae" />
+  </component>
+</project>
