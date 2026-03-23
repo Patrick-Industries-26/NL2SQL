@@ -47,8 +47,9 @@ EXAMPLE_QUESTIONS: list[dict] = [
     {"category": "Products", "icon": "🛒", "question": "Show the top 5 most expensive products by MSRP"},
     {"category": "Products", "icon": "🛒", "question": "List all products in the Classic Cars product line"},
     {"category": "Employees", "icon": "🧑‍💼", "question": "Show all employees and their job titles"},
-    {"category": "Employees", "icon": "🧑‍💼", "question": "Who are the sales representatives?"},
+    {"category": "Employees", "icon": "🧑‍💼", "question": "List employees whose job title is Sales Rep?"},
     {"category": "Analytics", "icon": "📊", "question": "How many customers in each country?"},
     {"category": "Analytics", "icon": "📊", "question": "List the average credit limit of customers for each country?"},
     {"category": "Analytics", "icon": "📊", "question": "Show the employee who make highest sale?"},
+    {"category": "Analytics", "icon": "📊", "question": "List customers who ordered in the Classic Cars product line?"},
 ]

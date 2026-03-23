@@ -1,22 +1,107 @@
 [
   {
-    "question": "Show the employee who make highest sale?",
-    "sql": "SELECT e.firstName, e.lastName, SUM(od.priceEach * od.quantityOrdered) AS total_sales FROM orders o JOIN orderdetails od ON o.orderNumber = od.orderNumber JOIN customers c ON o.customerNumber = c.customerNumber JOIN employees e ON c.salesRepEmployeeNumber = e.employeeNumber GROUP BY e.firstName, e.lastName ORDER BY total_sales DESC LIMIT 1",
-    "timestamp": "2026-03-05 09:54:04"
+    "question": "Show customers who added classic Cars?",
+    "sql": "SELECT c.customerNumber, c.customerName, c.contactLastName, c.contactFirstName, p.productName FROM customers c JOIN orders o ON c.customerNumber = o.customerNumber JOIN orderdetails od ON o.orderNumber = od.orderNumber JOIN products p ON od.productCode = p.productCode WHERE p.productLine = 'Classic Cars'",
+    "timestamp": "2026-03-10 11:24:26"
   },
   {
-    "question": "How many customers in each country?",
-    "sql": "SELECT c.country, COUNT(c.customerNumber) AS number_of_customers FROM customers c GROUP BY c.country ORDER BY number_of_customers DESC",
-    "timestamp": "2026-03-05 09:58:59"
+    "question": "Show distinct customers who added classic Cars?",
+    "sql": "SELECT DISTINCT c.customerName \nFROM customers c \nJOIN orders o ON c.customerNumber = o.customerNumber \nJOIN products p ON o.orderNumber = p.productCode \nWHERE p.productName = 'Classic Car'",
+    "timestamp": "2026-03-10 11:24:51"
   },
   {
-    "question": "how many orders in each status?",
-    "sql": "SELECT status, COUNT(*) FROM orders GROUP BY status",
-    "timestamp": "2026-03-06 13:56:23"
+    "question": "Show customers who order classic Cars?",
+    "sql": "SELECT c.customerNumber, c.customerName, p.productName FROM customers c JOIN orders o ON c.customerNumber = o.customerNumber JOIN orderdetails od ON o.orderNumber = od.orderNumber JOIN products p ON od.productCode = p.productCode WHERE p.productName = 'Classic Car'",
+    "timestamp": "2026-03-10 11:25:12"
   },
   {
-    "question": "Show orders placed in 2003",
-    "sql": "SELECT * FROM orders WHERE YEAR(orderDate) = 2003",
-    "timestamp": "2026-03-10 10:08:13"
+    "question": "Show customers who ordered classic Cars?",
+    "sql": "SELECT c.customerName, c.contactLastName, c.contactFirstName, c.phone, c.addressLine1, c.addressLine2, c.city, c.state, c.postalCode, c.country, c.salesRepEmployeeNumber, c.creditLimit FROM customers c JOIN orders o ON c.customerNumber = o.customerNumber JOIN products p ON o.orderNumber = p.productCode WHERE p.productLine = 'Classic Cars'",
+    "timestamp": "2026-03-10 11:28:45"
+  },
+  {
+    "question": "Show distinct customers who ordered classic Cars?",
+    "sql": "SELECT DISTINCT c.customerName \nFROM customers c \nJOIN orders o ON c.customerNumber = o.customerNumber \nJOIN orderdetails od ON o.orderNumber = od.orderNumber \nJOIN products p ON od.productCode = p.productCode \nWHERE p.productName = 'Classic Car'",
+    "timestamp": "2026-03-10 11:34:14"
+  },
+  {
+    "question": "Show distinct customers who ordered \"Classic Cars\"?",
+    "sql": "SELECT DISTINCT c.customerName \nFROM customers c \nJOIN orders o ON c.customerNumber = o.customerNumber \nJOIN orderdetails od ON o.orderNumber = od.orderNumber \nWHERE od.productCode = 'Classic Cars'",
+    "timestamp": "2026-03-10 11:34:47"
+  },
+  {
+    "question": "Show distinct customers who ordered Classic Cars?",
+    "sql": "SELECT DISTINCT c.customerName, c.contactLastName, c.contactFirstName, c.phone, c.addressLine1, c.addressLine2, c.city, c.state, c.postalCode, c.country, c.salesRepEmployeeNumber, c.creditLimit FROM customers c JOIN orders o ON c.customerNumber = o.customerNumber JOIN orderdetails od ON o.orderNumber = od.orderNumber JOIN products p ON od.productCode = p.productCode WHERE p.productLine = 'Classic Cars'",
+    "timestamp": "2026-03-10 11:35:40"
+  },
+  {
+    "question": "Who are the sales representatives?",
+    "sql": "SELECT DISTINCT c.salesRepEmployeeNumber FROM customers c",
+    "timestamp": "2026-03-10 11:39:43"
+  },
+  {
+    "question": "list the employees who are sales rep?",
+    "sql": "SELECT e.employeeNumber, e.firstName, e.lastName FROM employees e WHERE e.jobTitle = 'Sales Representative'",
+    "timestamp": "2026-03-10 11:41:33"
+  },
+  {
+    "question": "list employees whose job title is Sales Rep",
+    "sql": "SELECT e.employeeNumber, e.firstName, e.lastName, e.jobTitle FROM employees e WHERE e.jobTitle = 'Sales Rep'",
+    "timestamp": "2026-03-10 11:43:42"
+  },
+  {
+    "question": "Show the top 5 most expensive products by MSRP",
+    "sql": "SELECT productCode, productName, MSRP FROM products ORDER BY MSRP DESC LIMIT 5",
+    "timestamp": "2026-03-10 11:45:13"
+  },
+  {
+    "question": "List all products in the Classic Cars product line",
+    "sql": "SELECT `productLine`, `productName` FROM `products` WHERE `productLine` = 'Classic Cars'",
+    "timestamp": "2026-03-10 11:46:13"
+  },
+  {
+    "question": "Which products have less than 100 items in stock?",
+    "sql": "SELECT productCode FROM products WHERE quantityInStock < 100",
+    "timestamp": "2026-03-11 09:41:41"
+  },
+  {
+    "question": "list product details which have less than 100 items in stock?",
+    "sql": "SELECT `productCode`, `productName`, `productLine`, `productScale`, `productVendor`, `productDescription`, `quantityInStock` FROM `products` WHERE `quantityInStock` < 100",
+    "timestamp": "2026-03-11 09:42:18"
+  },
+  {
+    "question": "Show the top 10 customers by credit limit?",
+    "sql": "SELECT customerName, creditLimit FROM customers ORDER BY creditLimit DESC LIMIT 10",
+    "timestamp": "2026-03-11 09:43:06"
+  },
+  {
+    "question": "List customers who ordered in the Classic Cars product line",
+    "sql": "SELECT c.customerNumber, c.customerName, c.contactLastName, c.contactFirstName, c.phone, c.addressLine1, c.addressLine2, c.city, c.state, c.postalCode, c.country, p.productName \nFROM customers c \nJOIN orders o ON c.customerNumber = o.customerNumber \nJOIN orderdetails od ON o.orderNumber = od.orderNumber \nJOIN products p ON od.productCode = p.productCode \nWHERE p.productLine = 'Classic Cars'",
+    "timestamp": "2026-03-11 09:45:50"
+  },
+  {
+    "question": "Show all employees and their job titles",
+    "sql": "SELECT e.employeeNumber, e.firstName, e.lastName, e.jobTitle FROM employees e",
+    "timestamp": "2026-03-12 09:22:30"
+  },
+  {
+    "question": "Show the top 5 most expensive products by MSRP",
+    "sql": "SELECT productCode, productName, MSRP FROM products ORDER BY MSRP DESC LIMIT 5",
+    "timestamp": "2026-03-12 09:23:21"
+  },
+  {
+    "question": "List customers who ordered in the Classic Cars product line?",
+    "sql": "SELECT c.customerName, c.contactLastName, c.contactFirstName, p.productName \nFROM customers c \nJOIN orders o ON c.customerNumber = o.customerNumber \nJOIN orderdetails od ON o.orderNumber = od.orderNumber \nJOIN products p ON od.productCode = p.productCode \nWHERE p.productLine = 'Classic Cars'",
+    "timestamp": "2026-03-12 09:24:14"
+  },
+  {
+    "question": "List the average credit limit of customers for each country?",
+    "sql": "SELECT country, AVG(creditLimit) AS avg_credit_limit FROM customers GROUP BY country",
+    "timestamp": "2026-03-12 09:25:14"
+  },
+  {
+    "question": "Show the top 10 customers by credit limit",
+    "sql": "SELECT customerName, creditLimit FROM customers ORDER BY creditLimit DESC LIMIT 10",
+    "timestamp": "2026-03-12 09:54:15"
   }
 ]

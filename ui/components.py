@@ -49,7 +49,7 @@ def render_sidebar() -> None:
 def render_results(res: dict) -> None:
     """Renders the generated SQL and query result visualisations."""
     st.subheader("🧾 Generated SQL")
-    st.code(res["sql"], language="sql")
+    st.code(res["sql"] + ";", language="sql", width="content")
 
     if not res["success"]:
         st.error(f"Failed after {res['retries']} attempts.")

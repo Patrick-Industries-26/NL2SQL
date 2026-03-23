@@ -43,15 +43,11 @@ Q: List the employees and their managers.
 
 _COLUMN_RULES = """
 ### Important Column Rules
-- customers : customerNumber, customerName, contactLastName, contactFirstName, phone,
-              addressLine1, addressLine2, city, state, postalCode, country,
-              salesRepEmployeeNumber, creditLimit
-- employees  : employeeNumber, lastName, firstName, extension, email, officeCode,
-              reportsTo, jobTitle
-- products   : productCode, productName, productLine, productScale, productVendor,
-              productDescription, quantityInStock, buyPrice, MSRP
-- orders     : orderNumber, orderDate, requiredDate, shippedDate, status,
-              comments, customerNumber
+- customers : customerNumber, customerName, contactLastName, contactFirstName, phone, addressLine1, addressLine2, city, state, postalCode, country, salesRepEmployeeNumber, creditLimit
+- employees  : employeeNumber, lastName, firstName, extension, email, officeCode, reportsTo, jobTitle
+- products   : productCode, productName, productLine, productScale, productVendor, productDescription, quantityInStock, buyPrice, MSRP
+- orders     : orderNumber, orderDate, requiredDate, shippedDate, status, comments, customerNumber
+- orderdetails: orderNumber, productCode, quantityOrdered, priceEach, orderLineNumber
 """
 
 _LLM_OPTIONS = {

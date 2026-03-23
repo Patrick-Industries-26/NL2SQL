@@ -93,4 +93,6 @@ class SchemaRAG:
                 final_ddl.append(results["documents"][0][i])
                 retrieved_tables.append(results["metadatas"][0][i]["table_name"])
 
+        print(retrieved_tables)
+
         return "\n".join(final_ddl), retrieved_tables

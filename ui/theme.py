@@ -27,11 +27,11 @@ def _light_palette() -> dict:
     return dict(
         bg="#f8fafc", surface="#ffffff", surface2="#f1f5f9",
         text="#1e293b", subtext="#64748b", border="#e2e8f0",
-        accent="#2563eb", accent_hov="#f2f8f0",
+        accent="#2563eb", accent_hov="#f1f1f1",
         metric_bg="#f8fafc", code_bg="#f1f5f9", input_bg="#ffffff",
         tab_active="#2563eb", expander_bg="#f8fafc",
-        btn_ex_bg="#f1f5f9", btn_ex_col="#1e293b",
-        shadow="rgba(0,0,0,0.06)", btn_txt="#e2f8f0",
+        btn_ex_bg="#e1e1e1", btn_ex_col="#1e293b",
+        shadow="rgba(0,0,0,0.06)", btn_txt="#1e1e1e",
     )
 
 
@@ -65,7 +65,7 @@ def _build_css(p: dict) -> str:
     }}
 
     .stButton > button {{
-        background-color: {p['btn_txt']} !important;
+        background-color: {p['btn_ex_bg']} !important;
         color: {p['btn_txt']};
         border-radius: 8px !important;
         font-weight: 600 !important;
